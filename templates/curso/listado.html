@@ -1,0 +1,43 @@
+{% extends 'list.html' %}
+{% block titulo %}
+   Cursos
+{% endblock %}
+
+{% block titulolista %}
+   <h6>Listado de Cursos</h6>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 30%;">Nombre</th>
+        <th scope="col" style="width: 30%;">Creditos</th>
+        <th scope="col" style="width: 30%;">Estado</th>
+        <th scope="col" style="width: 10%;">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for c in object_list %}
+        <tr>
+            <td>{{ c.Nombre }}</td>
+            <td>{{ c.Creditos }}</td>
+            <td>{{ c.Estado }}</td>
+            <td>
+                <a href="/gestion/updatecurso/{{ c.id }}" class="btn btn-primary btn-xs btn-flat" >
+                    <i class="fas fa-edit "></i>
+                </a>
+                <a href="/gestion/deletecurso/{{ c.id }}" class="btn btn-danger btn-xs btn-flat" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block nuevoregistro %}
+<div class="card-footer">
+    <a href="{% url 'crearcurso' %}" class="btn btn-primary btn-flat" >
+        <i  class="fas fa-plus">Nuevo registro</i> 
+    </a>
+</div>
+{% endblock %}
+

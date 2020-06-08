@@ -1,0 +1,23 @@
+
+
+
+{% extends 'body.html' %}
+{% block titulo %}
+   Matricula
+{% endblock %}
+
+{% block titulolista %}
+   <h6>Eliminacion de Registro de la tabla Matricula</h6>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm">
+    <a href="/gestion/listarmatricula" class="close" >Cancelar</a>
+   
+</form>
+
+
+{% endblock%}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} 
+Matricula Universitaria
+{% endblock %}
+
+{% block layout %}
+    <div class="fondo" >
+      <div class="container p-3 my-3 border" style="padding: 2cm; background-color: bisque; width: 800px; height: 300px;" >
+      <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Fecha de Matricula</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for matricula in matriculas %}  
+              <tr>
+                <th scope="row">{{ matricula.Alumno }}</th>
+                <td>{{ matricula.Curso }}</td>
+                <td>{{ matricula.FechaMatricula }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+      </table>  
+    </div>   
+    <div class="container text-center">                 
+      <ul class="pager">
+        {% if matriculas.has_previous %}
+        <a href="?page={{ matriculas.previous_page_number }}" class="btn btn-outline-success my-2 my-sm-0">Anterior</a>
+        {% else %}
+        <a href="#" class="btn btn-outline-success my-2 my-sm-0 disabled ">Anterior</a>
+        {% endif %}
+        {% if matriculas.has_next %}
+        <a href="?page={{ matriculas.next_page_number }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Siguiente</a>
+        {% else %}
+        <a href="#" class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Siguiente</a>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+

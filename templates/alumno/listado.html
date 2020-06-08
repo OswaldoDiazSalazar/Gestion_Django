@@ -1,0 +1,48 @@
+{% extends 'list.html' %}
+{% block titulo %}
+   Alumnos
+{% endblock %}
+
+{% block titulolista %}
+   <h6>Listado de Alumnos</h6>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 15%;">Apellido Paterno</th>
+        <th scope="col" style="width: 15%;">Apellido Materno</th>
+        <th scope="col" style="width: 20%;">Nombres</th>
+        <th scope="col" style="width: 15%;">Cedula</th>
+        <th scope="col" style="width: 15%;">Fecha de Nacimiento</th>
+        <th scope="col" style="width: 10%;">Sexo</th>
+        <th scope="col" style="width: 10%;">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for c in object_list %}
+        <tr>
+            <td>{{ c.ApellidoPaterno }}</td>
+            <td>{{ c.ApellidoMaterno }}</td>
+            <td>{{ c.Nombres }}</td>
+            <td>{{ c.cedula }}</td>
+            <td>{{ c.FechaNacimiento }}</td>
+            <td>{{ c.Sexo }}</td>
+            <td>
+                <a href="/gestion/updatealumno/{{ c.id }}" class="btn btn-primary btn-xs btn-flat" >
+                    <i class="fas fa-edit "></i>
+                </a>
+                <a href="/gestion/deletealumno/{{ c.id }}" class="btn btn-danger btn-xs btn-flat" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block nuevoregistro %}
+<div class="card-footer">
+    <a href="{% url 'crearalumno' %}" class="btn btn-primary btn-flat">
+        <i  class="fas fa-plus"></i> Nuevo registro
+    </a>
+</div>
+{% endblock %}

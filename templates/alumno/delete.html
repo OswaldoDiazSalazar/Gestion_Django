@@ -1,0 +1,23 @@
+
+
+
+{% extends 'body.html' %}
+{% block titulo %}
+   Alumnos
+{% endblock %}
+
+{% block titulolista %}
+   <h6>Actualizacion de Alumno</h6>
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+        <a href="/gestion/listaralumno" class="close" >Cancelar</a>
+       
+    </form>
+
+
+{% endblock%}

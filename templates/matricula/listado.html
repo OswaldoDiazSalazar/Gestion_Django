@@ -1,0 +1,42 @@
+{% extends 'list.html' %}
+{% block titulo %}
+   Matricula
+{% endblock %}
+
+{% block titulolista %}
+   <h6>Listado de Alumnos Matriculados</h6>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 30%;">Alumno</th>
+        <th scope="col" style="width: 30%;">Curso</th>
+        <th scope="col" style="width: 30%;">Matricula</th>
+        <th scope="col" style="width: 10%;">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for c in object_list %}
+        <tr>
+            <td>{{ c.Alumno }}</td>
+            <td>{{ c.Curso }}</td>
+            <td>{{ c.FechaMatricula }}</td>
+            <td>
+                <a href="/gestion/updatematricula/{{ c.id }}" class="btn btn-primary btn-xs btn-flat" >
+                    <i class="fas fa-edit "></i>
+                </a>
+                <a href="/gestion/deletematricula/{{ c.id }}" class="btn btn-danger btn-xs btn-flat" >
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block nuevoregistro %}
+<div class="card-footer">
+    <a href="{% url 'crearmatricula' %}" class="btn btn-primary btn-flat">
+        <i  class="fas fa-plus"></i> Nuevo registro
+    </a>
+</div>
+{% endblock %}
